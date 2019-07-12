@@ -45,11 +45,11 @@ namespace Ping_Recorder
 
             while (true)
             {
-               
+
                 Thread.Sleep(Sleep_time);
-                if(P_enable)
+                if (P_enable)
                 {
-                   //获取ping时间间隔设定值
+                    //获取ping时间间隔设定值
                     try
                     {
                         Sleep_time = int.Parse(textBox4.Text);
@@ -62,7 +62,7 @@ namespace Ping_Recorder
                             //设置动态指示灯的时间间隔
                             this.timer1.Interval = Sleep_time / 2;
                         }));
-                        
+
                     }
                     catch (Exception e)
                     {
@@ -71,12 +71,12 @@ namespace Ping_Recorder
                         {
                             //停止ping后，参数可编辑
                             this.textBox1.Enabled = true;
-                           // this.textBox2.Enabled = true;
+                            // this.textBox2.Enabled = true;
                             this.textBox3.Enabled = true;
                             this.textBox4.Enabled = true;
                         }));
                         Sleep_time = 1000;//缺省值1000ms
-                        MessageBox.Show("时间间隔"+e.Message);
+                        MessageBox.Show("时间间隔" + e.Message);
                     }
                     //获取耗时超限制值打印的限制值
                     try
@@ -90,12 +90,12 @@ namespace Ping_Recorder
                         {
                             //停止ping后，参数可编辑
                             this.textBox1.Enabled = true;
-                           // this.textBox2.Enabled = true;
+                            // this.textBox2.Enabled = true;
                             this.textBox3.Enabled = true;
                             this.textBox4.Enabled = true;
                         }));
-                    time_limit = 50;//缺省值
-                        MessageBox.Show("耗时异常阀值"+e.Message);
+                        time_limit = 50;//缺省值
+                        MessageBox.Show("耗时异常阀值" + e.Message);
                     }
                     //尝试开始ping并显示结果
                     try
@@ -153,7 +153,7 @@ namespace Ping_Recorder
                             E++;
                             this.label12.Text = E.ToString();
                             this.textBox2.AppendText(DateTime.Now.ToString("yyyy-MM-dd hh-mm-ss.fff") + " Ping异常：" + ey.Message + "\r\n");
-                           
+
                         }));
                         //  MessageBox.Show(ey.Message);
 
