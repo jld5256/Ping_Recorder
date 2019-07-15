@@ -11,6 +11,7 @@ using System.Net.NetworkInformation;
 using System.Threading;
 using System.IO;
 using System.Timers;
+using System.ComponentModel;
 
 namespace Ping_Recorder
 {
@@ -267,6 +268,27 @@ namespace Ping_Recorder
             
         }
         #endregion
+
+       
+        /// <summary>
+        /// 关闭窗口时，提示停止Ping操作，以免抛异常。
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            if(P_enable)
+            {            
+               // Display a MsgBox asking the user to stop ping.
+               if (MessageBox.Show("请先停止Ping操作！", "警告",MessageBoxButtons.OK) == DialogResult.OK)
+               {
+                 e.Cancel = true;                 
+               }
+                
+
+            }
+            
+        }
+        
 
     }
 }
